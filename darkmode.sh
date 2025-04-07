@@ -49,11 +49,8 @@ check_node_version() {
 
 if ! check_node_version; then
     echo -e "${GREEN}================== Menginstall NodeJS ==================${NC}"
-    curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh
-    chmod +x nodesource_setup.sh
-    ./nodesource_setup.sh
-    apt install nodejs -y
-    rm nodesource_setup.sh
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+    sudo apt-get install -y nodejs
     echo -e "${GREEN}================== Sukses NodeJS ==================${NC}"
 else
     NODE_VERSION=$(node -v | cut -d 'v' -f 2)
