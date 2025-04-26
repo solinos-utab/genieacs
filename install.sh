@@ -155,29 +155,3 @@ echo -e "${GREEN}===============================================================
 echo -e "${GREEN}========== GenieACS UI akses port 3000. : http://$local_ip:3000 ============${NC}"
 echo -e "${GREEN}=================== Informasi: Whatsapp 081947215703 =======================${NC}"
 echo -e "${GREEN}============================================================================${NC}"
-cp -r logo-3976e73d.svg /usr/lib/node_modules/genieacs/public/
-echo -e "${GREEN}Sekarang install parameter. Apakah anda ingin melanjutkan? (y/n)${NC}"
-read confirmation
-
-if [ "$confirmation" != "y" ]; then
-    echo -e "${GREEN}Install dibatalkan..${NC}"
-    
-    exit 1
-fi
-for ((i = 5; i >= 1; i--)); do
-	sleep 1
-    echo "Lanjut Install Parameter $i. Tekan ctrl+c untuk membatalkan"
-done
-
-cd 
-sudo mongodump --db=genieacs --out genieacs-backup
-sudo mongorestore --db=genieacs --drop genieacs
-#Sukses
-echo -e "${GREEN}============================================================================${NC}"
-echo -e "${GREEN}=================== VIRTUAL PARAMETER BERHASIL DI INSTALL. =================${NC}"
-echo -e "${GREEN}===Jika ACS URL berbeda, silahkan edit di Admin >> Provosions >> inform ====${NC}"
-echo -e "${GREEN}========== GenieACS UI akses port 3000. : http://$local_ip:3000 ============${NC}"
-echo -e "${GREEN}=================== Informasi: Whatsapp 081947215703 =======================${NC}"
-echo -e "${GREEN}============================================================================${NC}"
-cd
-sudo rm -r genieacs
